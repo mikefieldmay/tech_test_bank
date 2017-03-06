@@ -26,6 +26,14 @@ describe Account do
     end
   end
 
+  describe '#deposit' do
+    it 'increases the balance of an account' do
+      deposit_amount = 500
+      subject.deposit(deposit_amount)
+      expect(subject.view_balance).to eq(initial_balance + deposit_amount)
+    end
+  end
+
 
 
 end
