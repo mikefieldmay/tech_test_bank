@@ -2,9 +2,9 @@ class Account
 
   DEFAULT_BALANCE = 0
 
-  def initialize(balance=DEFAULT_BALANCE, statement_class)
+  def initialize(balance=DEFAULT_BALANCE, statement)
     @balance = balance
-    @statement = statement_class.new
+    @statement = statement
   end
 
   def view_balance
