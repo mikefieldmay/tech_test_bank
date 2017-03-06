@@ -3,12 +3,16 @@ require 'account'
 describe Account do
 
   let(:initial_balance){1000}
-  subject {described_class.new(initial_balance)}
+  let(:statement_class){double :statement_class, new: []}
+  subject {described_class.new(initial_balance, statement_class)}
 
   describe "::new" do
     it 'should instantiate with a default balance of 0' do
-      account = Account.new
+      account = Account.new(statement_class)
       expect(account.view_balance).to eq 0
+    end
+    it 'should instantiate a new statement' do
+      expect(subject.view_statement).to eq []
     end
   end
 
