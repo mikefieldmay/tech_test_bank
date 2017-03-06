@@ -12,6 +12,7 @@ class Account
 
   def withdraw(amount)
     @balance -= amount
+
   end
 
 end
