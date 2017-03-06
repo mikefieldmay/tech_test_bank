@@ -7,5 +7,5 @@ class Transaction
       balance: balance
     }
   end
-  
+
 end

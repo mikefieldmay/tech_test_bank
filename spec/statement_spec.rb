@@ -5,7 +5,7 @@ describe Statement do
   subject {described_class.new}
   let(:transaction) {double :transaction}
 
-  describe 'default' do
+  describe '::new' do
     it 'has an empty array of transactions' do
       expect(subject.view_transactions).to be_empty
     end
