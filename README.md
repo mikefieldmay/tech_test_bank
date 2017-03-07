@@ -50,4 +50,4 @@ I'd like to be able to print my statement.
 ```
 Thoughts and direction
 ----------------------
-My original idea was to start with an account class. With that class you would be able to add and subtract from the account. This approach worked fine until I got to the point when I realised I needed to store the individual transactions on a statement. This then led to the development of a transaction and a statement class. 
+My original idea was to start with an account class. With that class you would be able to add and subtract from the account. This approach worked fine until I got to the point when I realized I needed to store the individual transactions on a statement. This then led to the development of a transaction and a statement class. The transaction is just a hash that contains some data. The statement contains many transactions and is initialized within a account class.

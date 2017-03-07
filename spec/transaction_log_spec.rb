@@ -1,6 +1,6 @@
-require 'statement'
+require 'transaction_log'
 
-describe Statement do
+describe TransactionLog do
 
   subject {described_class.new}
   let(:transaction) {double :transaction}

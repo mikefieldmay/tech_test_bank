@@ -1,4 +1,4 @@
-class Statement
+class TransactionLog
 
   def initialize
     @transactions = []
