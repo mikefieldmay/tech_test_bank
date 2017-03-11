@@ -1,10 +1,8 @@
 Tech Test Bank
 ==============
-Specification
+A practice tech test in which to take create a bank with the following requirement:
+Task
 ------------
-
-Requirements
------------
 
 You should be able to interact with the your code via a REPL like IRB or the JavaScript console. (You don't need to implement a command line interface that takes input from STDIN.)
 Deposits, withdrawal.
@@ -48,6 +46,40 @@ As a client,
 so I can view my statement,
 I'd like to be able to print my statement.
 ```
-Thoughts and direction
-----------------------
-My original idea was to start with an account class. With that class you would be able to add and subtract from the account. This approach worked fine until I got to the point when I realized I needed to store the individual transactions on a statement. This then led to the development of a transaction and a statement class. The transaction is just a hash that contains some data. The statement contains many transactions and is initialized within a account class.
+
+Getting Started
+---------------
+In it's current form, the application has been test driven with unit tests using stubbing and doubles. As a result you can install the application and run the tests, and the tests meet the criteria of the task, but a full feature test has not been written yet. Because of this, the app may not work properly in the development environment.
+
+
+```
+-$ git clone git@github.com:mikefieldmay/tech_test_bank.git
+-$ cd tech_test_bank
+-$ gem install bundler
+-$ bundle install
+-$ rspec
+```
+
+
+
+Challenges
+---------
+Great opportunity to practice test driven development and object oriented design. A lot of fun to work on something relatively simple, but with scope to do it very well, or very badly.
+
+Future improvements
+---------------
+Although everything is tested and working in unit tests, a full feature test hasn't been written yet so I'm not fully confident it would work properly in the command line.
+
+Whilst testing my Account class I moved towards feature tests with stuff that should really have been included in the Account unit tests. Account class is quite large at the moment which tells me that it is doing too much. It would be nice to delegate some it's responsibilities out to other classes.
+
+Whilst moving towards the end of the challenge I realised my Transaction class was essentially a hash and that my TransactionLog class just stores hashes rather than individual transactions. I would like to improve my Transaction class so that it has more methods rather than just being a hash.
+
+Built With
+---------
+
+- Ruby 2.3.3
+- Rspec
+
+Authors
+-------
+Mike Field-May

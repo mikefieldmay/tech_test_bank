@@ -39,7 +39,7 @@ class Account
   end
 
   def current_date
-    Time.now.strftime('%d,%m,%y')
+    Time.now.strftime('%d,%m,%Y')
   end
 
 end

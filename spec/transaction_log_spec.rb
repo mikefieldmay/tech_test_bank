@@ -2,7 +2,7 @@ require 'transaction_log'
 
 describe TransactionLog do
 
-  subject {described_class.new}
+  # subject {described_class.new}
   let(:transaction) {double :transaction}
 
   describe '::new' do
