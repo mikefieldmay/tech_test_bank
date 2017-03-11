@@ -60,6 +60,20 @@ In it's current form, the application has been test driven with unit tests using
 -$ rspec
 ```
 
+The .pryrc file is shown below which gives a summary on how to set the program up. If you type `pry` into the command line, it will set up an account for you.
+
+```
+require_relative 'lib/account'
+require_relative 'lib/statement_printer'
+require_relative 'lib/transaction_log'
+require_relative 'lib/transaction'
+
+transaction_log = TransactionLog.new
+account = Account.new(1000, transaction_log, Transaction)
+
+puts 'You have created an account'
+```
+
 
 
 Challenges
