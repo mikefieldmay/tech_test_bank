@@ -10,31 +10,31 @@ describe Account do
   describe "::new" do
     it 'should instantiate with a default balance of 0' do
       account = Account.new(transaction_log, transaction_class)
-      expect(account.view_balance).to eq 0
+      expect(account.balance).to eq 0
     end
     it 'should instantiate a new transaction_log' do
-      expect(transaction_log).to receive(:view_transactions)
+      expect(transaction_log).to receive(:transactions)
       subject.view_transactions
     end
   end
 
-  describe '#view_balance' do
+  describe '#balance' do
     it "returns the current balance of the account" do
-      expect(subject.view_balance).to eq initial_balance
+      expect(subject.balance).to eq initial_balance
     end
   end
 
   describe '#withdraw' do
     it 'reduces the balance of the account' do
-      allow(transaction_class).to receive(:create)
+      allow(transaction_class).to receive(:new)
       allow(transaction_log).to receive(:add_transaction)
       withdrawal_amount = 500
       subject.withdraw(withdrawal_amount)
-      expect(subject.view_balance).to eq(initial_balance - withdrawal_amount)
+      expect(subject.balance).to eq(initial_balance - withdrawal_amount)
     end
     it 'creates a new transaction' do
       withdrawal_amount = 500
-      expect(transaction_class).to receive(:create)
+      expect(transaction_class).to receive(:new)
       expect(transaction_log).to receive(:add_transaction)
       subject.withdraw(withdrawal_amount)
     end
@@ -45,14 +45,14 @@ describe Account do
 
   describe '#deposit' do
     it 'increases the balance of an account' do
-      allow(transaction_class).to receive(:create)
+      allow(transaction_class).to receive(:new)
       allow(transaction_log).to receive(:add_transaction)
       deposit_amount = 500
       subject.deposit(deposit_amount)
-      expect(subject.view_balance).to eq(initial_balance + deposit_amount)
+      expect(subject.balance).to eq(initial_balance + deposit_amount)
     end
     it 'creates a new transaction' do
-      expect(transaction_class).to receive(:create)
+      expect(transaction_class).to receive(:new)
       expect(transaction_log).to receive(:add_transaction)
       deposit_amount = 500
       subject.deposit(deposit_amount)

@@ -1,19 +1,17 @@
 class Account
 
+  attr_reader :balance
+
   DEFAULT_BALANCE = 0
 
   def initialize(balance=DEFAULT_BALANCE, transaction_log, transaction_class)
     @balance = balance
-    @transactions = transaction_log
+    @transactions_log = transaction_log
     @Transaction = transaction_class
   end
 
-  def view_balance
-    @balance
-  end
-
   def view_transactions
-    @transactions.view_transactions
+    @transactions_log.transactions
   end
 
   def withdraw(amount)
@@ -28,14 +26,16 @@ class Account
 
   private
 
+  attr_writer :balance
+
   def withdrawal_transaction(amount)
-    transaction = @Transaction.create(current_date, '', amount, @balance)
-    @transactions.add_transaction(transaction)
+    transaction = @Transaction.new(current_date, '', amount, @balance)
+    @transactions_log.add_transaction(transaction)
   end
 
   def deposit_transaction(amount)
-    transaction = @Transaction.create(current_date, amount, '', @balance)
-    @transactions.add_transaction(transaction)
+    transaction = @Transaction.new(current_date, amount, '', @balance)
+    @transactions_log.add_transaction(transaction)
   end
 
   def current_date

@@ -16,21 +16,15 @@ describe 'Bank' do
 
     it 'changes the balance' do
       account.withdraw(amount)
-      expect(account.view_balance).to eq(initial_balance - amount)
+      expect(account.balance).to eq(initial_balance - amount)
     end
     it 'creates a transaction' do
-      expect(transaction_class).to receive(:create)
+      expect(transaction_class).to receive(:new)
       account.withdraw(amount)
     end
     it 'stores a transaction in the transaction log' do
-      time_now = '06/07/16'
-      allow(account).to receive(:current_date).and_return('06/07/16')
       account.withdraw(amount)
-      transaction = { date: time_now,
-                      credit: '',
-                      debit: amount,
-                      balance: initial_balance - amount}
-      expect(account.view_transactions).to eq ([transaction])
+      expect(account.view_transactions).to include Transaction
     end
 
   end
@@ -38,27 +32,18 @@ describe 'Bank' do
   describe 'depositing into an account' do
     it 'changes the balance' do
       account.deposit(amount)
-      expect(account.view_balance).to eq(initial_balance + amount)
+      expect(account.balance).to eq(initial_balance + amount)
     end
 
     it 'creates a transaction' do
-      expect(transaction_class).to receive(:create)
+      expect(transaction_class).to receive(:new)
       account.deposit(amount)
     end
 
     it 'stores the transaction in the transaction log' do
-      time_now = '06/07/16'
-      allow(account).to receive(:current_date).and_return('06/07/16')
       account.deposit(amount)
-      transaction = { date: time_now ,
-                      credit: amount,
-                      debit: '',
-                      balance: initial_balance + amount}
-      expect(account.view_transactions).to eq ([transaction])
+      expect(account.view_transactions).to include Transaction
     end
-
   end
-
-
 
 end
